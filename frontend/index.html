@@ -132,7 +132,8 @@ p{color:#d0d0d0}
 <section id="analytics" class="page"><div class="section"><h2>Descriptive Statistics</h2><div class="grid" id="stats"></div></div><div class="two"><div class="section"><h2>Future Spending Forecast</h2><div id="forecast"></div></div><div class="section"><h2>What-If Simulator</h2><label>Category</label><select id="wcat"></select><label>Reduce Spending %</label><input id="reduce" type="number" value="20" min="1" max="100"><button onclick="whatif()">Calculate</button><div id="what"></div></div></div><div class="section"><h2>Overspending</h2><div id="over"></div></div><div class="section"><h2>Unusual Transactions</h2><div id="anomaly"></div></div><div class="section"><h2>Savings Recommendations</h2><div id="recommend"></div></div></section>
 </main>
 <script>
-const API=localStorage.getItem("FINSIGHT_API")||"http://127.0.0.1:8000";let cc,mc;
+const API = "https://finsight-api-eynd.onrender.com"; 
+let cc, mc;
 const options={expense:["Food & Dining","Groceries","Shopping","Rent / Housing","Utilities","Transportation","Travel","Entertainment","Healthcare","Education","Subscriptions","Insurance","EMI / Loans","Bills","Personal Care","Family","Other"],income:["Salary","Freelance","Business","Investment Return","Bonus","Gift","Other Income"]};
 const money=x=>"₹"+Number(x||0).toLocaleString("en-IN",{maximumFractionDigits:2});
 async function api(p,o={}){let r=await fetch(API+p,o),d=await r.json().catch(()=>({}));if(!r.ok)throw Error(d.detail||"Request failed");return d}
